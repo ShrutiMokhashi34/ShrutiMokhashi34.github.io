@@ -55,7 +55,7 @@ a:focus-visible,button:focus-visible,label:focus-within{outline:2px solid var(--
 .prompt .sig{color:var(--ok)}
 .prompt .caret{display:inline-block;width:.55em;height:1.05em;background:var(--accent);vertical-align:-.15em;margin-left:2px;animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
-.name{font-family:var(--mono);font-weight:700;font-size:clamp(2.1rem,5.4vw,4.2rem);line-height:1.02;letter-spacing:-.035em;margin:0}
+.name{font-family:var(--mono);font-weight:700;font-size:clamp(1.5rem,4.2vw,3.4rem);white-space:nowrap;line-height:1.02;letter-spacing:-.035em;margin:0}
 .name .brace{color:var(--accent);font-weight:500}
 .role{font-family:var(--mono);font-size:clamp(1rem,2.2vw,1.2rem);color:var(--accent);margin:.9rem 0 0}
 .intro{max-width:62ch;font-size:1.08rem;margin:1.4rem 0 0;color:var(--text)}
@@ -116,7 +116,7 @@ ul.pts li::marker{color:var(--accent)}
 .cred-list li::before{content:"✓";font-family:var(--mono);color:var(--ok);flex:none}
 
 /* ---------- resume ---------- */
-.resume-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1.25rem}
+.resume-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:1rem;margin-bottom:1.25rem}
 .stamp{font-family:var(--mono);font-size:.88rem;color:var(--muted)}
 .stamp b{color:var(--text);font-weight:500}
 .resume-actions{display:flex;flex-wrap:wrap;gap:.5rem}
@@ -153,6 +153,7 @@ ul.pts li::marker{color:var(--accent)}
 footer{font-family:var(--mono);font-size:.8rem;color:var(--muted);padding:0 0 3rem}
 
 @media (max-width:760px){
+  .name{font-size:clamp(1.3rem,7.2vw,2.4rem)}
   .hero{grid-template-columns:1fr}
   .hero{gap:1.75rem}
   .portrait{width:132px;justify-self:start;margin:14px 0 0 14px;order:-1}
@@ -296,12 +297,12 @@ footer{font-family:var(--mono);font-size:.8rem;color:var(--muted);padding:0 0 3r
       <p class="crumb">~/shruti/<b>resume.pdf</b></p>
       <h2>Resume</h2>
       <div class="resume-bar">
-        <p class="stamp" style="margin:0">Last updated <b id="stamp">—</b></p>
         <div class="resume-actions">
           <a class="btn" id="dl" href="resume.pdf" download="Shruti_Mokhashi_Resume.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg>Download PDF</a>
         </div>
       </div>
       <div class="pages" id="pages"><p class="note">Loading resume…</p></div>
+      <p class="stamp" style="margin:1rem 0 0">Last updated <b id="stamp">—</b></p>
     </section>
 
     <section class="panel" role="tabpanel" id="p-contact" aria-labelledby="t-contact" tabindex="0" hidden>
@@ -316,7 +317,7 @@ footer{font-family:var(--mono);font-size:.8rem;color:var(--muted);padding:0 0 3r
     </section>
   </div>
 </main>
-<footer class="wrap">Built on SQL, pipelines and a lot of coffee.</footer>
+<footer class="wrap">Built on SQL, data pipelines and a lot of coffee.</footer>
 </template>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"></script>
