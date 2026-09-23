@@ -50,12 +50,12 @@ a:focus-visible,button:focus-visible,label:focus-within{outline:2px solid var(--
 .wrap{max-width:1120px;margin:0 auto;padding:0 clamp(1rem,4vw,2.5rem)}
 
 /* ---------- hero ---------- */
-.hero{padding:clamp(2.5rem,7vw,5rem) 0 clamp(2rem,5vw,3rem)}
+.hero{padding-top:clamp(2.5rem,7vw,5rem);padding-bottom:clamp(2rem,5vw,3rem)}
 .prompt{font-family:var(--mono);font-size:.95rem;color:var(--muted);margin:0 0 1.25rem;min-height:1.6em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .prompt .sig{color:var(--ok)}
 .prompt .caret{display:inline-block;width:.55em;height:1.05em;background:var(--accent);vertical-align:-.15em;margin-left:2px;animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
-.name{font-family:var(--mono);font-weight:700;font-size:clamp(2.4rem,7.5vw,4.6rem);line-height:1.02;letter-spacing:-.035em;margin:0}
+.name{font-family:var(--mono);font-weight:700;font-size:clamp(2.1rem,5.4vw,4.2rem);line-height:1.02;letter-spacing:-.035em;margin:0}
 .name .brace{color:var(--accent);font-weight:500}
 .role{font-family:var(--mono);font-size:clamp(1rem,2.2vw,1.2rem);color:var(--accent);margin:.9rem 0 0}
 .intro{max-width:62ch;font-size:1.08rem;margin:1.4rem 0 0;color:var(--text)}
@@ -69,6 +69,12 @@ a:focus-visible,button:focus-visible,label:focus-within{outline:2px solid var(--
 .btn:hover{border-color:var(--accent)}
 .btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
 .btn svg{width:18px;height:18px;flex:none}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.hero-text{min-width:0}
+.portrait{margin:0;position:relative;width:clamp(240px,26vw,330px);aspect-ratio:1;justify-self:end}
+.portrait::before{content:"";position:absolute;inset:-14px;border-radius:50%;border:1.5px dashed color-mix(in srgb,var(--accent) 55%,transparent)}
+.portrait img{position:relative;display:block;width:100%;height:100%;object-fit:cover;border-radius:50%;border:4px solid var(--surface);box-shadow:0 0 0 2px var(--accent)}
+.portrait .node{position:absolute;right:8%;bottom:8%;width:22px;height:22px;border-radius:50%;background:var(--ok);border:4px solid var(--bg)}
 
 /* ---------- console layout ---------- */
 .console{display:grid;grid-template-columns:220px minmax(0,1fr);gap:0;border:1px solid var(--line);border-radius:10px;background:var(--surface);overflow:hidden;margin-bottom:4rem}
@@ -147,6 +153,10 @@ ul.pts li::marker{color:var(--accent)}
 footer{font-family:var(--mono);font-size:.8rem;color:var(--muted);padding:0 0 3rem}
 
 @media (max-width:760px){
+  .hero{grid-template-columns:1fr}
+  .hero{gap:1.75rem}
+  .portrait{width:132px;justify-self:start;margin:14px 0 0 14px;order:-1}
+  .portrait .node{width:18px;height:18px;border-width:3px}
   .console{grid-template-columns:1fr}
   .nav{flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line);padding:.5rem;position:sticky;top:0;z-index:2}
   .nav-title{display:none}
@@ -164,8 +174,9 @@ footer{font-family:var(--mono);font-size:.8rem;color:var(--muted);padding:0 0 3r
 <div id="app"></div>
 <template id="page-tpl">
 <header class="wrap hero">
+  <div class="hero-text">
   <p class="prompt" aria-hidden="true"><span class="sig">shruti@bengaluru</span>:~$ <span id="typed"></span><span class="caret"></span></p>
-  <h1 class="name"><span class="brace">{</span> Shruti Mokhashi <span class="brace">}</span></h1>
+  <h1 class="name"><span class="brace">{</span>&nbsp;Shruti Mokhashi&nbsp;<span class="brace">}</span></h1>
   <p class="role">Data Engineer / Data Analytics</p>
   <p class="intro">I build the pipelines that turn scattered source systems into data people can trust. At ZS Associates I engineered ETL pipelines on Snowflake, PySpark and Dataiku for a leading U.S. pharmaceutical client, and on my own I've built a full medallion-architecture banking platform on Databricks, Snowflake and Google Cloud.</p>
   <dl class="spec">
@@ -180,6 +191,8 @@ footer{font-family:var(--mono);font-size:.8rem;color:var(--muted);padding:0 0 3r
     <a class="btn" href="https://github.com/ShrutiMokhashi34" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>GitHub</a>
     <button class="btn" type="button" data-goto="resume"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>View resume</button>
   </div>
+  </div>
+  <figure class="portrait"><img src="photo.jpg" alt="Shruti Mokhashi" width="560" height="560"><span class="node" aria-hidden="true"></span></figure>
 </header>
 
 <main class="wrap">
