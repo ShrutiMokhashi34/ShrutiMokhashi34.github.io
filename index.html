@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shruti Mokhashi — Data Engineering</title>
+<meta name="description" content="Data engineer in Bengaluru building ETL pipelines and data platforms on Snowflake, Databricks and the cloud. Open to data engineering, data analyst and analytics engineer roles.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Shruti Mokhashi — Data Engineering">
+<meta property="og:description" content="Data engineer in Bengaluru building ETL pipelines and data platforms on Snowflake, Databricks and the cloud.">
+<meta property="og:url" content="https://shrutimokhashi34.github.io/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☁️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="app-style">
+:root{
+  --bg:#0F1C2E; --surface:#152740; --surface-2:#1B3150; --line:#27446A; --grid:rgba(120,170,230,.09);
+  --text:#E4ECF5; --muted:#93A9C3; --accent:#4CC2FF; --accent-ink:#06233A; --metric:#FFB547; --ok:#4EDB9C;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#EFF4FA; --surface:#FFFFFF; --surface-2:#F4F8FC; --line:#CCDAE9; --grid:rgba(30,90,160,.08);
+    --text:#12253C; --muted:#50667F; --accent:#0A74B8; --accent-ink:#FFFFFF; --metric:#A45F00; --ok:#11875A;
+    color-scheme:light;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#EFF4FA; --surface:#FFFFFF; --surface-2:#F4F8FC; --line:#CCDAE9; --grid:rgba(30,90,160,.08);
+  --text:#12253C; --muted:#50667F; --accent:#0A74B8; --accent-ink:#FFFFFF; --metric:#A45F00; --ok:#11875A;
+  color-scheme:light;
+}
+:root[data-theme="dark"]{
+  --bg:#0F1C2E; --surface:#152740; --surface-2:#1B3150; --line:#27446A; --grid:rgba(120,170,230,.09);
+  --text:#E4ECF5; --muted:#93A9C3; --accent:#4CC2FF; --accent-ink:#06233A; --metric:#FFB547; --ok:#4EDB9C;
+  color-scheme:dark;
+}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+*,*::before,*::after{box-sizing:inherit}
+body{
+  margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:1rem;line-height:1.6;
+  background-image:radial-gradient(var(--grid) 1.2px,transparent 1.2px);background-size:22px 22px;
+}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible,label:focus-within{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 clamp(1rem,4vw,2.5rem)}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(2.5rem,7vw,5rem) 0 clamp(2rem,5vw,3rem)}
+.prompt{font-family:var(--mono);font-size:.95rem;color:var(--muted);margin:0 0 1.25rem;min-height:1.6em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prompt .sig{color:var(--ok)}
+.prompt .caret{display:inline-block;width:.55em;height:1.05em;background:var(--accent);vertical-align:-.15em;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.name{font-family:var(--mono);font-weight:700;font-size:clamp(2.4rem,7.5vw,4.6rem);line-height:1.02;letter-spacing:-.035em;margin:0}
+.name .brace{color:var(--accent);font-weight:500}
+.role{font-family:var(--mono);font-size:clamp(1rem,2.2vw,1.2rem);color:var(--accent);margin:.9rem 0 0}
+.intro{max-width:62ch;font-size:1.08rem;margin:1.4rem 0 0;color:var(--text)}
+.spec{display:grid;grid-template-columns:max-content 1fr;gap:.2rem 1.25rem;font-family:var(--mono);font-size:.88rem;margin:1.6rem 0 0;padding:1rem 1.25rem;border-left:3px solid var(--accent);background:var(--surface);max-width:640px}
+.spec dt{color:var(--muted)}
+.spec dd{margin:0}
+.spec .live{color:var(--ok)}
+.spec .live::before{content:"";display:inline-block;width:.55em;height:.55em;border-radius:50%;background:var(--ok);margin-right:.45em;vertical-align:.05em}
+.actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.75rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.9rem;font-weight:500;padding:.6rem 1rem;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--text);text-decoration:none;cursor:pointer;min-height:44px}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn svg{width:18px;height:18px;flex:none}
+
+/* ---------- console layout ---------- */
+.console{display:grid;grid-template-columns:220px minmax(0,1fr);gap:0;border:1px solid var(--line);border-radius:10px;background:var(--surface);overflow:hidden;margin-bottom:4rem}
+.nav{border-right:1px solid var(--line);background:var(--surface-2);padding:1rem .6rem;display:flex;flex-direction:column;gap:.15rem}
+.nav-title{font-family:var(--mono);font-size:.78rem;color:var(--muted);padding:.2rem .7rem .7rem}
+.tab{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:.6rem;width:100%;padding:.6rem .7rem;border-radius:6px;font-family:var(--mono);font-size:.92rem;color:var(--muted);cursor:pointer;min-height:44px}
+.tab:hover{color:var(--text);background:color-mix(in srgb,var(--accent) 8%,transparent)}
+.tab[aria-selected="true"]{color:var(--text);background:color-mix(in srgb,var(--accent) 16%,transparent);box-shadow:inset 3px 0 0 var(--accent)}
+.tab:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.tab .ico{width:18px;height:18px;flex:none;color:var(--accent)}
+.panel{padding:clamp(1.25rem,3.5vw,2.25rem);min-width:0}
+.panel[hidden]{display:none}
+.crumb{font-family:var(--mono);font-size:.85rem;color:var(--muted);margin:0 0 .35rem}
+.crumb b{color:var(--accent);font-weight:500}
+.panel h2{font-family:var(--mono);font-weight:700;font-size:clamp(1.5rem,3.2vw,2rem);letter-spacing:-.02em;margin:0 0 1.5rem;line-height:1.15}
+.panel h3{font-family:var(--mono);font-size:1.12rem;margin:0;line-height:1.35}
+.panel h4{font-family:var(--mono);font-size:.95rem;font-weight:600;color:var(--accent);margin:1.5rem 0 .5rem}
+.meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.25rem 1rem;color:var(--muted);font-size:.93rem;margin:.3rem 0 0}
+.meta .when{font-family:var(--mono);font-size:.85rem}
+ul.pts{margin:.4rem 0 0;padding-left:1.1rem;max-width:78ch}
+ul.pts li{margin:.45rem 0}
+ul.pts li::marker{color:var(--accent)}
+.m{font-family:var(--mono);font-weight:600;color:var(--metric);font-size:.95em}
+.entry+.entry{margin-top:2.25rem;padding-top:2rem;border-top:1px dashed var(--line)}
+.stack{display:flex;flex-wrap:wrap;gap:.35rem;margin:.75rem 0 0;padding:0;list-style:none}
+.stack li{font-family:var(--mono);font-size:.78rem;padding:.15rem .5rem;border:1px solid var(--line);border-radius:4px;color:var(--muted)}
+.badge{display:inline-block;font-family:var(--mono);font-size:.8rem;color:var(--metric);border:1px solid color-mix(in srgb,var(--metric) 55%,transparent);border-radius:4px;padding:.1rem .45rem;margin-top:.5rem}
+.ext{font-family:var(--mono);font-size:.85rem;margin-left:.4rem;white-space:nowrap}
+
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem}
+.skill-group{border:1px solid var(--line);border-radius:8px;padding:1rem 1.1rem;background:var(--surface-2)}
+.skill-group h3{font-size:.95rem;color:var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;list-style:none;margin:.75rem 0 0;padding:0}
+.chips li{font-size:.86rem;padding:.2rem .6rem;border-radius:999px;background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--text)}
+
+.creds{display:grid;gap:1.75rem}
+.cred-list{list-style:none;margin:.6rem 0 0;padding:0;display:grid;gap:.5rem}
+.cred-list li{display:flex;gap:.6rem;align-items:baseline}
+.cred-list li::before{content:"✓";font-family:var(--mono);color:var(--ok);flex:none}
+
+/* ---------- resume ---------- */
+.resume-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1.25rem}
+.stamp{font-family:var(--mono);font-size:.88rem;color:var(--muted)}
+.stamp b{color:var(--text);font-weight:500}
+.resume-actions{display:flex;flex-wrap:wrap;gap:.5rem}
+.upload{position:relative}
+.upload input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%}
+.status{font-family:var(--mono);font-size:.86rem;margin:0 0 1rem;padding:.6rem .8rem;border-radius:6px;border:1px solid var(--line);background:var(--surface-2)}
+.status[hidden]{display:none}
+.status.err{border-color:#E0605E;color:#E0605E}
+.pages{display:grid;gap:1rem;overflow-x:auto}
+.pages canvas{width:100%;max-width:100%;height:auto;display:block;border-radius:4px;box-shadow:0 0 0 1px var(--line);background:#fff}
+.pages .note{color:var(--muted);font-family:var(--mono);font-size:.9rem;padding:2rem 0}
+
+/* ---------- contact ---------- */
+.contact{list-style:none;margin:0;padding:0;display:grid;gap:.75rem;max-width:620px}
+.contact li{display:grid;grid-template-columns:110px 1fr auto;align-items:center;gap:1rem;padding:.9rem 1rem;border:1px solid var(--line);border-radius:8px;background:var(--surface-2)}
+.contact .k{font-family:var(--mono);font-size:.85rem;color:var(--muted)}
+.contact .v{overflow-wrap:anywhere}
+.copy{all:unset;cursor:pointer;font-family:var(--mono);font-size:.8rem;color:var(--accent);padding:.35rem .5rem;border-radius:4px}
+.copy:focus-visible{outline:2px solid var(--accent)}
+
+.linkbtn{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--mono);font-size:.8rem;font-weight:500;padding:.3rem .65rem;border:1px solid var(--line);border-radius:5px;color:var(--accent);text-decoration:none;white-space:nowrap;min-height:32px}
+.linkbtn:hover{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.linkbtn svg{width:14px;height:14px;flex:none}
+.cred-list li{justify-content:space-between;flex-wrap:wrap;padding:.55rem .75rem;border:1px solid var(--line);border-radius:6px;background:var(--surface-2)}
+.cred-list .cn{display:flex;gap:.6rem;align-items:baseline;flex:1 1 240px}
+.cred-list li::before{content:none}
+.cred-list .cn::before{content:"✓";font-family:var(--mono);color:var(--ok);flex:none}
+.entry-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem 1rem}
+.langs{list-style:none;margin:.6rem 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.4rem 2rem;max-width:560px}
+.langs li{display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.dots{display:inline-flex;gap:4px}
+.dots i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.dots i.on{background:var(--accent)}
+footer{font-family:var(--mono);font-size:.8rem;color:var(--muted);padding:0 0 3rem}
+
+@media (max-width:760px){
+  .console{grid-template-columns:1fr}
+  .nav{flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line);padding:.5rem;position:sticky;top:0;z-index:2}
+  .nav-title{display:none}
+  .tab{width:auto;flex:none;padding:.5rem .8rem}
+  .tab[aria-selected="true"]{box-shadow:inset 0 -3px 0 var(--accent)}
+  .contact li{grid-template-columns:1fr auto}
+  .contact .k{grid-column:1/-1}
+  .spec{grid-template-columns:1fr;gap:0}
+  .spec dd{margin-bottom:.4rem}
+}
+@media (prefers-reduced-motion:reduce){.prompt .caret{animation:none}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<template id="page-tpl">
+<header class="wrap hero">
+  <p class="prompt" aria-hidden="true"><span class="sig">shruti@bengaluru</span>:~$ <span id="typed"></span><span class="caret"></span></p>
+  <h1 class="name"><span class="brace">{</span> Shruti Mokhashi <span class="brace">}</span></h1>
+  <p class="role">Data Engineer / Data Analytics</p>
+  <p class="intro">I build the pipelines that turn scattered source systems into data people can trust. At ZS Associates I engineered ETL pipelines on Snowflake, PySpark and Dataiku for a leading U.S. pharmaceutical client, and on my own I've built a full medallion-architecture banking platform on Databricks, Snowflake and Google Cloud.</p>
+  <dl class="spec">
+    <dt>region</dt><dd>Bengaluru, Karnataka, India</dd>
+    <dt>core stack</dt><dd>SQL, Python, PySpark, Snowflake, Airflow, Databricks</dd>
+    <dt>clouds</dt><dd>Azure, Google Cloud, AWS</dd>
+    <dt>status</dt><dd class="live">Open to data engineering, data analyst and analytics engineer roles</dd>
+  </dl>
+  <div class="actions">
+    <a class="btn primary" href="mailto:shrutimokhashi851@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email me</a>
+    <a class="btn" href="https://www.linkedin.com/in/shruti-mokhashi/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg>LinkedIn</a>
+    <a class="btn" href="https://github.com/ShrutiMokhashi34" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>GitHub</a>
+    <button class="btn" type="button" data-goto="resume"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>View resume</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="console">
+    <nav class="nav" role="tablist" aria-label="Resume sections">
+      <div class="nav-title">~/shruti</div>
+      <button class="tab" role="tab" id="t-experience" aria-controls="p-experience" data-tab="experience"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Experience</button>
+      <button class="tab" role="tab" id="t-projects" aria-controls="p-projects" data-tab="projects"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>Projects</button>
+      <button class="tab" role="tab" id="t-skills" aria-controls="p-skills" data-tab="skills"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></svg>Skills</button>
+      <button class="tab" role="tab" id="t-credentials" aria-controls="p-credentials" data-tab="credentials"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 8 5-3 5 3-1.5-8"/></svg>Credentials</button>
+      <button class="tab" role="tab" id="t-resume" aria-controls="p-resume" data-tab="resume"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg>Resume</button>
+      <button class="tab" role="tab" id="t-contact" aria-controls="p-contact" data-tab="contact"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>Links</button>
+    </nav>
+
+    <section class="panel" role="tabpanel" id="p-experience" aria-labelledby="t-experience" tabindex="0">
+      <p class="crumb">~/shruti/<b>experience</b></p>
+      <h2>Experience</h2>
+      <article class="entry">
+        <h3>Business Technology Solutions Associate, ETL Developer</h3>
+        <p style="margin:.35rem 0 0;font-weight:600">ZS Associates</p>
+        <p class="meta" style="margin-top:.1rem"><span>Pune, Maharashtra, India</span><span class="when">Oct 2024 – Jun 2026</span></p>
+        <h4>Scalable ETL, analytics and reporting on brand promotions</h4>
+        <ul class="pts">
+          <li>Engineered scalable ETL pipelines in SQL, PySpark, Python, Snowflake and Dataiku DSS, integrating data from <span class="m">5+</span> sources (SAP HANA, Salesforce, Cvent, Veeva, Okta). Used generative AI tools (ChatGPT Enterprise, Microsoft Copilot, Claude Code) to speed up development, improving data quality by <span class="m">25%</span> and cutting processing time by <span class="m">35%</span>.</li>
+          <li>Built automated KPI frameworks and reporting datasets validated through SIT/UAT testing, raising reporting efficiency by <span class="m">30%</span> across <span class="m">30+</span> critical metrics for a leading U.S. pharmaceutical client, while leading requirements gathering across client, analytics, reporting and dashboard teams.</li>
+          <li>Ran promotional effectiveness and trend analyses on large commercial datasets, contributing to a <span class="m">15–20%</span> improvement in campaign ROI.</li>
+          <li>Enhanced the backend pipelines behind a Dataiku-hosted self-service analytics app with real-time Power BI dashboards, reducing insight-generation time by <span class="m">40%</span> for <span class="m">50+</span> business stakeholders.</li>
+          <li>Cut dashboard refresh time by <span class="m">70 minutes</span> (about <span class="m">54%</span>, from 2.15 hours to roughly 1 hour) through backend optimization, and reduced time lost to promotion-configuration errors by <span class="m">30%</span> with better validation and proactive email alerts.</li>
+        </ul>
+        <h4>Data Quality Management (DQM) automation</h4>
+        <ul class="pts">
+          <li>Designed and deployed an automated DQM framework validating <span class="m">18</span> supply-chain datasets for a leading U.S. pharmaceutical company using MS SQL Server, AWS S3, AWS Lambda, SQL and Python, with NULL, duplicate, schema and data-type checks plus automated alerting and remediation.</li>
+        </ul>
+        <ul class="stack" aria-label="Tools used"><li>Python</li><li>SQL</li><li>Snowflake</li><li>PySpark</li><li>Dataiku DSS</li><li>Power BI</li><li>AWS Lambda</li><li>AWS S3</li><li>MS SQL Server</li></ul>
+      </article>
+    </section>
+
+    <section class="panel" role="tabpanel" id="p-projects" aria-labelledby="t-projects" tabindex="0" hidden>
+      <p class="crumb">~/shruti/<b>projects</b></p>
+      <h2>Personal projects</h2>
+      <article class="entry">
+        <div class="entry-head"><h3>End-to-end banking data platform</h3><a class="linkbtn" href="https://github.com/ShrutiMokhashi34/Banking_Data_Platform" target="_blank" rel="noopener" aria-label="Banking data platform on GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>View on GitHub</a></div>
+        <span class="badge">Google Patchamomma 2026: ranked 58th of 3,500</span>
+        <ul class="pts">
+          <li>Engineered a banking data platform on Azure Databricks and Snowflake with a Bronze–Silver–Gold medallion architecture, incremental ingestion, SCD Type 1/2 processing and Delta Lake storage on Azure Data Lake Storage (ADLS Gen2) across customer, account, transaction, loan and risk domains.</li>
+          <li>Automated orchestration with Airflow and data quality validation in Databricks across <span class="m">16</span> source tables, with audit tables tracking run status, row counts and file-level metadata for every run; versioned in Git with stage-by-stage deployment.</li>
+          <li>Added a Google ADK AI chatbot for natural-language querying with role-based access controls separating customer- and employee-facing data, plus Looker Studio dashboards, shipped as a full-stack app with a React frontend on Firebase Hosting and a backend on Google Cloud Run.</li>
+        </ul>
+        <ul class="stack" aria-label="Tools used"><li>PySpark</li><li>SQL</li><li>Airflow</li><li>Snowflake</li><li>Azure Databricks</li><li>Delta Lake (ADLS Gen2)</li><li>BigQuery</li><li>Google ADK</li><li>Cloud Run</li><li>Firebase</li><li>React</li></ul>
+      </article>
+      <article class="entry">
+        <div class="entry-head"><h3>Hepatitis diagnosis prediction model</h3><a class="linkbtn" href="https://github.com/ShrutiMokhashi34/Hepatitis-Analysis" target="_blank" rel="noopener" aria-label="Hepatitis analysis on GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>View on GitHub</a></div>
+        <ul class="pts">
+          <li>Analyzed health records of <span class="m">156</span> patients, imputing missing values statistically with the mice package in R.</li>
+          <li>Ranked <span class="m">19</span> variables by importance for hepatitis diagnosis to improve prediction accuracy with a Random Forest model.</li>
+        </ul>
+        <ul class="stack" aria-label="Tools used"><li>R</li><li>randomForest</li><li>mice</li><li>Amelia</li><li>Excel</li></ul>
+      </article>
+      <p style="margin-top:2rem"><a href="https://github.com/ShrutiMokhashi34" target="_blank" rel="noopener">More on GitHub</a></p>
+    </section>
+
+    <section class="panel" role="tabpanel" id="p-skills" aria-labelledby="t-skills" tabindex="0" hidden>
+      <p class="crumb">~/shruti/<b>skills</b></p>
+      <h2>Skills</h2>
+      <div class="skills">
+        <div class="skill-group"><h3>Data engineering and cloud</h3><ul class="chips"><li>Snowflake</li><li>Airflow</li><li>Azure Databricks</li><li>Delta Lake (ADLS Gen2)</li><li>Dataiku DSS</li><li>Microsoft SQL Server</li><li>Google Cloud Platform</li><li>BigQuery</li><li>Google ADK</li><li>AWS S3</li><li>AWS Lambda</li><li>Apache Kafka</li><li>Apache Flink</li><li>Git</li><li>JIRA</li></ul></div>
+        <div class="skill-group"><h3>Languages</h3><ul class="chips"><li>Python</li><li>SQL</li><li>PySpark</li><li>R</li><li>Jupyter</li><li>Anaconda</li><li>RStudio</li></ul></div>
+        <div class="skill-group"><h3>BI and visualization</h3><ul class="chips"><li>Power BI</li><li>Tableau</li><li>Looker Studio</li><li>Excel</li></ul></div>
+        <div class="skill-group"><h3>Libraries</h3><ul class="chips"><li>NumPy</li><li>Pandas</li><li>Matplotlib</li><li>Seaborn</li><li>Scikit-learn</li><li>dplyr</li><li>tidyverse</li><li>ggplot2</li><li>randomForest</li><li>mice</li><li>Amelia</li></ul></div>
+        <div class="skill-group"><h3>Data practice</h3><ul class="chips"><li>ETL/ELT pipelines</li><li>Data modeling</li><li>Data warehousing</li><li>Data integration and migration</li><li>Query optimization</li><li>Data validation and QA</li><li>KPI development</li><li>EDA</li><li>Statistical analysis</li><li>Predictive modeling</li><li>Workflow automation</li></ul></div>
+        <div class="skill-group"><h3>Working with people</h3><ul class="chips"><li>Stakeholder management</li><li>Requirements gathering</li><li>Cross-functional collaboration</li><li>Root cause analysis</li><li>Data storytelling</li><li>Presentations</li></ul></div>
+      </div>
+    </section>
+
+    <section class="panel" role="tabpanel" id="p-credentials" aria-labelledby="t-credentials" tabindex="0" hidden>
+      <p class="crumb">~/shruti/<b>credentials</b></p>
+      <h2>Certifications, achievements and education</h2>
+      <div class="creds">
+        <div>
+          <h3>Certifications</h3>
+          <ul class="cred-list"><li><span class="cn">Confluent Certified Data Streaming Engineer</span><a class="linkbtn" href="https://drive.google.com/drive/folders/1oJ562PO_PTiFkLArx7ktGNWRpnAWiWBs?usp=drive_link" target="_blank" rel="noopener" aria-label="View credential: Confluent Certified Data Streaming Engineer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>View credential</a></li><li><span class="cn">Certified ThoughtSpot Professional</span><a class="linkbtn" href="https://drive.google.com/file/d/1dQEHPU0bNH9T0hKOqeDrwwMDXeuN1LIf/view?usp=drive_link" target="_blank" rel="noopener" aria-label="View credential: Certified ThoughtSpot Professional"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>View credential</a></li><li><span class="cn">Dataiku Advanced Designer</span><a class="linkbtn" href="https://drive.google.com/file/d/1sxbWGkT1VsaXg48mdCE9KgQh927DILz3/view?usp=drive_link" target="_blank" rel="noopener" aria-label="View credential: Dataiku Advanced Designer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>View credential</a></li><li><span class="cn">Dataiku Core Designer</span><a class="linkbtn" href="https://drive.google.com/file/d/1clVK-PEXohuyK5FCYN6svqXrbOHaBXCY/view?usp=drive_link" target="_blank" rel="noopener" aria-label="View credential: Dataiku Core Designer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>View credential</a></li><li><span class="cn">Google Patchamomma 2026 certificates</span><a class="linkbtn" href="https://drive.google.com/drive/folders/1BWpGphetTOQ3TWDifpamLYcul84JP-UA?usp=drive_link" target="_blank" rel="noopener" aria-label="View credential: Google Patchamomma 2026 certificates"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>View credential</a></li></ul>
+        </div>
+        <div>
+          <h3>Achievement</h3>
+          <p style="margin:.5rem 0 0;max-width:70ch">Ranked <span class="m">58th</span> of <span class="m">3,500</span> women in tech globally (top ~2%) in Google's Patchamomma 2026 cohort, building AI-powered solutions on Google Cloud under structured mentorship.</p>
+        </div>
+        <div>
+          <h3>Education</h3>
+          <p style="margin:.5rem 0 0;font-weight:600">Motilal Nehru National Institute of Technology, Prayagraj</p>
+          <p class="meta" style="justify-content:flex-start;gap:1rem;margin-top:.1rem"><span>Bachelor of Technology (B.Tech) - Biotechnology</span></p>
+          <p class="meta" style="justify-content:flex-start;gap:1.5rem"><span class="when">2020 – 2024</span><span>CPI <span class="m">9.04</span>/10</span></p>
+        </div>
+        <div>
+          <h3>Spoken languages</h3>
+          <ul class="langs"><li aria-label="English, proficiency 5 of 5"><span>English</span><span class="dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li><li aria-label="Kannada, proficiency 5 of 5"><span>Kannada</span><span class="dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li><li aria-label="Hindi, proficiency 5 of 5"><span>Hindi</span><span class="dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li><li aria-label="German, proficiency 2 of 5"><span>German</span><span class="dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></li></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" role="tabpanel" id="p-resume" aria-labelledby="t-resume" tabindex="0" hidden>
+      <p class="crumb">~/shruti/<b>resume.pdf</b></p>
+      <h2>Resume</h2>
+      <div class="resume-bar">
+        <p class="stamp" style="margin:0">Last updated <b id="stamp">—</b></p>
+        <div class="resume-actions">
+          <a class="btn" id="dl" href="resume.pdf" download="Shruti_Mokhashi_Resume.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg>Download PDF</a>
+        </div>
+      </div>
+      <div class="pages" id="pages"><p class="note">Loading resume…</p></div>
+    </section>
+
+    <section class="panel" role="tabpanel" id="p-contact" aria-labelledby="t-contact" tabindex="0" hidden>
+      <p class="crumb">~/shruti/<b>links</b></p>
+      <h2>Get in touch</h2>
+      <ul class="contact">
+        <li><span class="k">email</span><a class="v" href="mailto:shrutimokhashi851@gmail.com">shrutimokhashi851@gmail.com</a><button class="copy" type="button" data-copy="shrutimokhashi851@gmail.com">copy</button></li>
+        <li><span class="k">linkedin</span><a class="v" href="https://www.linkedin.com/in/shruti-mokhashi/" target="_blank" rel="noopener">linkedin.com/in/shruti-mokhashi</a><span></span></li>
+        <li><span class="k">github</span><a class="v" href="https://github.com/ShrutiMokhashi34" target="_blank" rel="noopener">github.com/ShrutiMokhashi34</a><span></span></li>
+        <li><span class="k">location</span><span class="v">Bengaluru, Karnataka, India</span><span></span></li>
+      </ul>
+    </section>
+  </div>
+</main>
+<footer class="wrap">Built on SQL, pipelines and a lot of coffee.</footer>
+</template>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"></script>
+<script id="app-script">
+(function(){
+  var PDFJS = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/";
+  var tpl = document.getElementById("page-tpl");
+  var app = document.getElementById("app");
+  app.appendChild(tpl.content.cloneNode(true));
+  var $ = function(s){ return app.querySelector(s); };
+
+  /* ---- typed command (one load moment) ---- */
+  var cmd = "cloud describe profile --user shruti-mokhashi";
+  var typed = $("#typed");
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce) typed.textContent = cmd;
+  else { var i = 0; (function step(){ typed.textContent = cmd.slice(0, ++i); if (i < cmd.length) setTimeout(step, 28 + Math.random()*40); })(); }
+
+  /* ---- tabs ---- */
+  var tabs = Array.prototype.slice.call(app.querySelectorAll(".tab"));
+  function show(name, focus){
+    tabs.forEach(function(t){
+      var on = t.dataset.tab === name;
+      t.setAttribute("aria-selected", on ? "true" : "false");
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+      if (on && focus) t.focus();
+    });
+    if (name === "resume") renderPdf();
+    try { history.replaceState(null, "", "#" + name); } catch(e){}
+  }
+  tabs.forEach(function(t, idx){
+    t.addEventListener("click", function(){ show(t.dataset.tab); });
+    t.addEventListener("keydown", function(e){
+      var d = (e.key === "ArrowDown" || e.key === "ArrowRight") ? 1 : (e.key === "ArrowUp" || e.key === "ArrowLeft") ? -1 : 0;
+      if (!d) return; e.preventDefault();
+      show(tabs[(idx + d + tabs.length) % tabs.length].dataset.tab, true);
+    });
+  });
+  app.querySelectorAll("[data-goto]").forEach(function(b){
+    b.addEventListener("click", function(){ show(b.dataset.goto); $(".console").scrollIntoView({behavior: reduce ? "auto" : "smooth", block:"start"}); });
+  });
+  var start = (location.hash || "").slice(1);
+  show(tabs.some(function(t){ return t.dataset.tab === start; }) ? start : "experience");
+
+  /* ---- copy ---- */
+  app.querySelectorAll("[data-copy]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var done = function(){ b.textContent = "copied"; setTimeout(function(){ b.textContent = "copy"; }, 1600); };
+      try { navigator.clipboard.writeText(b.dataset.copy).then(done, function(){ b.textContent = "select + copy"; }); }
+      catch(e){ b.textContent = "select + copy"; }
+    });
+  });
+
+  /* ---- timestamp: date resume.pdf was last committed ---- */
+  var REPO = "ShrutiMokhashi34/ShrutiMokhashi34.github.io";
+  function fmt(d){
+    try { return new Intl.DateTimeFormat(undefined, {dateStyle:"medium", timeStyle:"short"}).format(d); }
+    catch(e){ return d.toISOString(); }
+  }
+  function setStamp(d){ if (!d || isNaN(d)) return; $("#stamp").textContent = fmt(d); $("#stamp").title = d.toISOString(); }
+  fetch("https://api.github.com/repos/" + REPO + "/commits?path=resume.pdf&per_page=1")
+    .then(function(r){ if (!r.ok) throw 0; return r.json(); })
+    .then(function(c){ setStamp(new Date(c[0].commit.committer.date)); })
+    .catch(function(){
+      fetch("resume.pdf", {method:"HEAD", cache:"no-store"}).then(function(r){
+        var lm = r.headers.get("Last-Modified"); if (lm) setStamp(new Date(lm));
+      }).catch(function(){});
+    });
+
+  /* ---- pdf preview ---- */
+  var rendered = false;
+  async function renderPdf(){
+    if (rendered) return; rendered = true;
+    var holder = $("#pages");
+    try {
+      var lib = window.pdfjsLib;
+      if (!lib) throw new Error("viewer unavailable");
+      lib.GlobalWorkerOptions.workerSrc = PDFJS + "pdf.worker.min.js";
+      var res = await fetch("resume.pdf", {cache:"no-cache"});
+      if (!res.ok) throw new Error("missing");
+      var doc = await lib.getDocument({data: new Uint8Array(await res.arrayBuffer()), isEvalSupported:false}).promise;
+      holder.innerHTML = "";
+      for (var p = 1; p <= doc.numPages; p++){
+        var page = await doc.getPage(p);
+        var base = page.getViewport({scale:1});
+        var vp = page.getViewport({scale: 1500 / base.width});
+        var c = document.createElement("canvas");
+        c.width = Math.floor(vp.width); c.height = Math.floor(vp.height);
+        c.setAttribute("role", "img");
+        c.setAttribute("aria-label", "Resume page " + p + " of " + doc.numPages);
+        holder.appendChild(c);
+        await page.render({canvasContext: c.getContext("2d"), viewport: vp}).promise;
+      }
+    } catch(e){
+      holder.innerHTML = '<p class="note">The resume preview could not load. <a href="resume.pdf" target="_blank" rel="noopener">Open the PDF</a> instead.</p>';
+    }
+  }
+  if (!$("#p-resume").hidden) renderPdf();
+})();
+</script>
+</body>
+</html>
